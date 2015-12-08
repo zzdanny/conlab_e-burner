@@ -1,4 +1,4 @@
-package tw.ntust.e_burning;
+package tw.ntust.e_burner;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

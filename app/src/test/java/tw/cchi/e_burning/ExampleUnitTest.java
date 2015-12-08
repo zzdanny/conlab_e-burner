@@ -1,4 +1,4 @@
-package tw.ntust.e_burning;
+package tw.ntust.e_burner;
 
 import org.junit.Test;
 

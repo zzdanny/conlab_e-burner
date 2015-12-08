@@ -1,10 +1,10 @@
-package tw.ntust.e_burning.activity;
+package tw.ntust.e_burner.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import tw.ntust.e_burning.R;
+import tw.ntust.e_burner.R;
 
 public class MainActivity extends AppCompatActivity {
 

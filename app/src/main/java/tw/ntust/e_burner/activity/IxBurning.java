@@ -1,4 +1,4 @@
-package tw.ntust.e_burning.activity;
+package tw.ntust.e_burner.activity;
 
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.UUID;
 
-import tw.ntust.e_burning.R;
+import tw.ntust.e_burner.R;
 
 public class IxBurning extends AppCompatActivity {
 
