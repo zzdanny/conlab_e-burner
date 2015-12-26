@@ -26,8 +26,7 @@ public class IxBurning extends AppCompatActivity {
     private BluetoothSocket btSocket = null;
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // Android SPP UUID.
 
-    private Button btnSend, btnDisconnect;
-    private EditText txtSendStr;
+    private Button btnDisconnect;
 
     private ProgressDialog progress;
 
@@ -45,16 +44,8 @@ public class IxBurning extends AppCompatActivity {
 
     private void initComponents() {
         setTitle("BT Transfer Test");
-        btnSend = (Button)findViewById(R.id.ixburning_btnSend);
         btnDisconnect = (Button)findViewById(R.id.ixburning_btnDisconnect);
-        txtSendStr = (EditText)findViewById(R.id.ixburning_txtSendStr);
 
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btSendMsg(txtSendStr.getText().toString());
-            }
-        });
         btnDisconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +86,7 @@ public class IxBurning extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            progress = ProgressDialog.show(IxBurning.this, "Connecting...", "Please wait!!!");  //show a progress dialog
+            progress = ProgressDialog.show(IxBurning.this, "Connecting...", "Please wait");  //show a progress dialog
         }
 
         @Override

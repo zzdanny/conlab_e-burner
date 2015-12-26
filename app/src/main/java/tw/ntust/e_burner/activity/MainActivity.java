@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // ---------- FOR DEBUG ----------
-        startActivity(new Intent(MainActivity.this, SelectDevice.class));
+        // startActivity(new Intent(MainActivity.this, SelectDevice.class));
         // -------------------------------
     }
 }
