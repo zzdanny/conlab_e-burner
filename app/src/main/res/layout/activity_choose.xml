@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:eburner="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tw.ntust.e_burner.activity.ChooseActivity"
+    android:background="@color/colorThemeBackground">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="69dp"
+            android:layout_height="84dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_coins"
+            android:adjustViewBounds="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <tw.ntust.e_burner.component.RoundProgress
+                android:id="@+id/red_progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="35dip"
+                android:padding="3dip"
+                eburner:max="100"
+                eburner:progress="50"
+                eburner:progressDrawable="@drawable/red_progress_clip"
+                eburner:trackInt="@drawable/progress_bar_fill_bg"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
