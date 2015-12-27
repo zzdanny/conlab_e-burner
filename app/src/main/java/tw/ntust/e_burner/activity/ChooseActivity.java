@@ -6,13 +6,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import tw.ntust.e_burner.R;
 
 public class ChooseActivity extends Activity {
 
+    private int remainingAncestor, remainingEmperor;
+
     // -- layout.activity_choose
     private ProgressBar progressEmperor, progressAncestor;
+    private TextView txtEmperorProgress, txtAncestorPorgress;
     // -- layout.choose_target
     private ImageView imgEmperor, imgAncestor;
     // -- layout.choose_amount
@@ -22,15 +26,30 @@ public class ChooseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_target);
+
+        // get data from Shared Preferences
+        // ----- default value for testing
+        remainingAncestor = 30;
+        remainingEmperor = 40;
+        // -----
+
         initComponents_chooseTarget();
-        
-        animateProgressBar(progressAncestor, 50);
-        animateProgressBar(progressEmperor, 50);
+
+        // animate progressBar from 0 to current value when activity start
+        animateProgressBar(progressAncestor, remainingAncestor);
+        animateProgressBar(progressEmperor, remainingEmperor);
     }
 
     private void initComponents_choose() {
         progressAncestor = (ProgressBar) findViewById(R.id.choose_progressAncestor);
         progressEmperor = (ProgressBar) findViewById(R.id.choose_progressEmperor);
+        txtAncestorPorgress = (TextView) findViewById(R.id.choose_txtAncestorProgress);
+        txtEmperorProgress = (TextView) findViewById(R.id.choose_txtEmperorProgress);
+
+        progressAncestor.setProgress(remainingAncestor);
+        progressEmperor.setProgress(remainingEmperor);
+        txtAncestorPorgress.setText(String.valueOf(remainingAncestor));
+        txtEmperorProgress.setText(String.valueOf(remainingEmperor));
     }
 
     private void initComponents_chooseTarget() {
