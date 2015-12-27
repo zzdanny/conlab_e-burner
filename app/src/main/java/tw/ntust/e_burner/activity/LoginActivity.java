@@ -8,19 +8,15 @@ import android.widget.Button;
 
 import tw.ntust.e_burner.R;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         initComponents();
-
-        // ---------- FOR DEBUG ----------
-        // startActivity(new Intent(MainActivity.this, SelectDevice.class));
-        // -------------------------------
     }
 
     private void initComponents() {
@@ -29,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ChooseActivity.class));
+                startActivity(new Intent(LoginActivity.this, ChooseActivity.class));
                 finish();
             }
         });
