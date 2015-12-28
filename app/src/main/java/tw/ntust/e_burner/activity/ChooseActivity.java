@@ -3,16 +3,23 @@ package tw.ntust.e_burner.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import tw.ntust.e_burner.R;
+import tw.ntust.e_burner.components.AmountItem;
+import tw.ntust.e_burner.components.AmountListAdapter;
 
 public class ChooseActivity extends Activity {
 
     private int remainingAncestor, remainingEmperor;
+    private ArrayList<AmountItem> amountItems;
 
     // -- layout.activity_choose
     private ProgressBar progressEmperor, progressAncestor;
@@ -21,6 +28,7 @@ public class ChooseActivity extends Activity {
     private ImageView imgEmperor, imgAncestor;
     // -- layout.choose_amount
     private Button btnStart, btnCancel;
+    private ListView listAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,11 @@ public class ChooseActivity extends Activity {
         // ----- default value for testing
         remainingAncestor = 30;
         remainingEmperor = 40;
+        amountItems = new ArrayList<>();
+        amountItems.add(new AmountItem(0, "大節-5疊"));
+        amountItems.add(new AmountItem(1, "大節-5疊"));
+        amountItems.add(new AmountItem(2, "小節-3疊"));
+        amountItems.add(new AmountItem(3, "小節-3疊"));
         // -----
 
         initComponents_chooseTarget();
@@ -48,7 +61,8 @@ public class ChooseActivity extends Activity {
 
         progressAncestor.setProgress(remainingAncestor);
         progressEmperor.setProgress(remainingEmperor);
-        txtEmperorProgress.setText(String.valueOf(remainingEmperor));
+        txtAncestorPorgress.setText(String.format("%3d", remainingAncestor));
+        txtEmperorProgress.setText(String.format("%3d", remainingEmperor));
     }
 
     private void initComponents_chooseTarget() {
@@ -71,9 +85,12 @@ public class ChooseActivity extends Activity {
     private void initComponents_chooseAmount() {
         initComponents_choose();
 
+        listAmount = (ListView) findViewById(R.id.chooseAmount_listAmount);
         btnStart = (Button) findViewById(R.id.chooseAmount_btnStart);
         btnCancel = (Button) findViewById(R.id.chooseAmount_btnCancel);
 
+        listAmount.setAdapter(new AmountListAdapter(ChooseActivity.this, amountItems));
+        listAmount.setItemChecked(0, true);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

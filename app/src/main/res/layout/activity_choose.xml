@@ -64,7 +64,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginLeft="5sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true" />
 
             </RelativeLayout>
 
@@ -104,7 +105,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginLeft="5sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true" />
 
             </RelativeLayout>
 

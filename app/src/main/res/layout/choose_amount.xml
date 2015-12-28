@@ -45,7 +45,11 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/textView4"
                 android:id="@+id/chooseAmount_listAmount"
-                android:layout_above="@+id/linearLayout2" />
+                android:layout_above="@+id/linearLayout2"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:choiceMode="singleChoice" />
 
             <LinearLayout
                 android:orientation="horizontal"
