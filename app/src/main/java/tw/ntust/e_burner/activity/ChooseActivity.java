@@ -48,7 +48,6 @@ public class ChooseActivity extends Activity {
 
         progressAncestor.setProgress(remainingAncestor);
         progressEmperor.setProgress(remainingEmperor);
-        txtAncestorPorgress.setText(String.valueOf(remainingAncestor));
         txtEmperorProgress.setText(String.valueOf(remainingEmperor));
     }
 
