@@ -19,17 +19,21 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5" />
 
-        <TableLayout
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp">
 
                 <ImageView
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/chooseTarget_imgEmperor"
                     android:tag="emperor"
@@ -37,25 +41,55 @@
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     android:layout_gravity="center_horizontal"
-                    android:layout_weight="1" />
+                    android:layout_above="@+id/textView5"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="化給神明"
+                    android:id="@+id/textView5"
+                    android:textAlignment="center"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp">
 
                 <ImageView
-                    android:layout_width="0dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/chooseTarget_imgAncestor"
                     android:tag="ancestor"
                     android:src="@drawable/pic_ancestor"
                     android:adjustViewBounds="true"
-                    android:layout_marginLeft="30sp"
                     android:scaleType="fitCenter"
                     android:layout_gravity="bottom"
-                    android:layout_weight="1" />
-            </TableRow>
+                    android:layout_above="@+id/textView6"
+                    android:layout_centerHorizontal="true" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </TableLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="化給祖先"
+                    android:id="@+id/textView6"
+                    android:textAlignment="center"
+                    android:layout_gravity="bottom"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
 
         <Space
             android:layout_width="0dp"
