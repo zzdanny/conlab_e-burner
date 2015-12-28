@@ -22,6 +22,10 @@ public class AmountListAdapter extends BaseAdapter {
         amountItems = _amountItems;
     }
 
+    static class ViewHolder {
+        private TextView txtTitle;
+    }
+
     @Override
     public int getCount() {
         return amountItems.size();
@@ -39,11 +43,20 @@ public class AmountListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = layoutInflater.inflate(R.layout.list_amount_item, null);
+        ViewHolder viewHolder = null;
 
-        txtTitle = (TextView) convertView.findViewById(R.id.amountListItem_txtTitle);
+        if(convertView == null){
+            viewHolder = new ViewHolder();
+            convertView = layoutInflater.inflate(R.layout.list_amount_item, parent, false);
 
-        txtTitle.setText(amountItems.get(position).getTitle());
+            viewHolder.txtTitle = (TextView) convertView.findViewById(R.id.amountListItem_txtTitle);
+
+            convertView.setTag(viewHolder);
+        }else{
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        viewHolder.txtTitle.setText(amountItems.get(position).getTitle());
 
         return convertView;
     }
