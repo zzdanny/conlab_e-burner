@@ -1,6 +1,7 @@
 package tw.ntust.e_burner.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -96,6 +97,15 @@ public class ChooseActivity extends Activity {
             public void onClick(View view) {
                 setContentView(R.layout.choose_target);
                 initComponents_chooseTarget();
+            }
+        });
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(ChooseActivity.this, MainActivity.class));
+                finish();
+
             }
         });
     }

@@ -17,9 +17,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initComponents();
-
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        finish();
     }
 
     private void initComponents() {

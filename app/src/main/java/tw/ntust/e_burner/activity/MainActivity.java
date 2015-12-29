@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 放在listView中的图片资源id
-        int[] imgAry = new int[] { R.drawable.ic_coin };
+        int[] imgAry = new int[] { R.drawable.ic_coin};
         // 创建List集合对象
         final List a = new ArrayList();
         // 为List集合添加数据
