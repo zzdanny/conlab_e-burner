@@ -6,14 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,24 +19,16 @@ import java.util.Map;
 import tw.ntust.e_burner.R;
 import tw.ntust.e_burner.flingswipe.SwipeFlingAdapterView;
 
-public class MainActivity extends AppCompatActivity {
-
-    private ArrayList<String> al;
-    private ArrayList a;
-    private ArrayAdapter<String> arrayAdapter;
-    private int i;
+public class IxBurningTest extends AppCompatActivity {
 
     @InjectView(R.id.frame)
     SwipeFlingAdapterView flingContainer;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+        setContentView(R.layout.activity_ixburning_test);
         ButterKnife.inject(this);
-
-
 
         // 放在listView中的图片资源id
         int[] imgAry = new int[] { R.drawable.ic_coin};
@@ -59,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 R.layout.item, new String[] { "image" },
                 new int[] { R.id.helloText});
 
-
         flingContainer.setAdapter(adapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
@@ -73,14 +61,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onUpCardExit(Object dataObject) {
-                makeToast(MainActivity.this, "Up!");
+                makeToast(IxBurningTest.this, "Up!");
             }
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
                 // Ask for more data here
                 Log.d("LIST", "notified");
-                i++;
             }
 
             @Override
@@ -94,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                makeToast(MainActivity.this, "Clicked!");
+                makeToast(IxBurningTest.this, "Clicked!");
             }
         });
 
@@ -103,11 +90,5 @@ public class MainActivity extends AppCompatActivity {
     static void makeToast(Context ctx, String s){
         Toast.makeText(ctx, s, Toast.LENGTH_SHORT).show();
     }
-
-
-
-
-
-
 
 }

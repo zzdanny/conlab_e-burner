@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,6 +20,8 @@ public class ChooseActivity extends Activity {
 
     private int remainingAncestor, remainingEmperor;
     private ArrayList<AmountItem> amountItems;
+
+    public final int REQUEST_IXBURNUNG = 10;
 
     // -- layout.activity_choose
     private ProgressBar progressEmperor, progressAncestor;
@@ -52,6 +53,15 @@ public class ChooseActivity extends Activity {
         // animate progressBar from 0 to current value when activity start
         animateProgressBar(progressAncestor, remainingAncestor);
         animateProgressBar(progressEmperor, remainingEmperor);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        System.out.println("Request code=" + requestCode);
+        if (requestCode == REQUEST_IXBURNUNG) {
+            setContentView(R.layout.choose_target);
+            initComponents_chooseTarget();
+        }
     }
 
     private void initComponents_choose() {
@@ -102,10 +112,7 @@ public class ChooseActivity extends Activity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                startActivity(new Intent(ChooseActivity.this, MainActivity.class));
-                finish();
-
+                startActivityForResult(new Intent(ChooseActivity.this, IxBurningTest.class), REQUEST_IXBURNUNG);
             }
         });
     }
