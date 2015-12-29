@@ -6,12 +6,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import tw.ntust.e_burner.R;
 import tw.ntust.e_burner.flingswipe.SwipeFlingAdapterView;
@@ -19,6 +25,7 @@ import tw.ntust.e_burner.flingswipe.SwipeFlingAdapterView;
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> al;
+    private ArrayList a;
     private ArrayAdapter<String> arrayAdapter;
     private int i;
 
@@ -33,27 +40,33 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.inject(this);
 
 
-        al = new ArrayList<>();
-        al.add("php");
-        al.add("c");
-        al.add("python");
-        al.add("java");
-        al.add("html");
-        al.add("c++");
-        al.add("css");
-        al.add("javascript");
 
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
+        // 放在listView中的图片资源id
+        int[] imgAry = new int[] { R.drawable.ic_coin };
+        // 创建List集合对象
+        final List a = new ArrayList();
+        // 为List集合添加数据
+        for (int i = 0; i < imgAry.length; i++) {
+            Map map = new HashMap();
+            map.put("image", imgAry[i]);
+        // 金紙數量在這
+            for (int k = 0; k < 100; k++) {
+                a.add(map);
+            }
+        }
+        // 設定item adapter
+        final SimpleAdapter adapter = new SimpleAdapter(this, a,
+                R.layout.item, new String[] { "image" },
+                new int[] { R.id.helloText});
 
 
-        flingContainer.setAdapter(arrayAdapter);
+        flingContainer.setAdapter(adapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
                 // this is the simplest way to delete an object from the Adapter (/AdapterView)
-                Log.d("LIST", "removed object!");
-                al.remove(0);
-                arrayAdapter.notifyDataSetChanged();
+               // Log.d("LIST", "removed object!");
+                adapter.notifyDataSetChanged();
             }
 
 
@@ -66,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
                 // Ask for more data here
-                al.add("XML ".concat(String.valueOf(i)));
-                arrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
                 i++;
             }
@@ -75,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onScroll(float scrollProgressPercent) {
                 View view = flingContainer.getSelectedView();
-                view.findViewById(R.id.item_swipe_right_indicator).setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
-                view.findViewById(R.id.item_swipe_left_indicator).setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
             }
         });
 
