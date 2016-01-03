@@ -48,7 +48,13 @@ public class IxBurningTest extends AppCompatActivity {
                 R.layout.item, new String[] { "image" },
                 new int[] { R.id.helloText});
 
+
+
+
         flingContainer.setAdapter(adapter);
+
+
+
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
