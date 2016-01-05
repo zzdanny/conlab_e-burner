@@ -5,33 +5,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <ImageView
-        android:id="@+id/helloText"
-        android:textSize="40sp"
-        android:textColor="@android:color/white"
-        android:gravity="center"
-        android:layout_width="221dp"
-        android:layout_height="326dp"
-        android:src="@drawable/ic_coins"
-        android:layout_gravity="center_horizontal|bottom" />
 
-
-
-
-
-
-
-    <ImageView    android:layout_width="143dp"
-        android:layout_height="212dp"
-        android:id="@+id/o"
-        android:src="@drawable/burner_9"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
     <ImageView
         android:layout_width="210dp"
         android:layout_height="310dp"
-        android:id="@+id/imageView3"
+        android:id="@+id/helloText"
         android:src="@drawable/ic_coin"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal|bottom" />
