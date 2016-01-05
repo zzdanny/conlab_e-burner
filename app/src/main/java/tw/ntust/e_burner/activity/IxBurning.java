@@ -33,7 +33,7 @@ public class IxBurning extends AppCompatActivity {
 
     BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
-    private static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // Android SPP UUID.
+    private static final UUID myUUID = UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66"); // Android SPP UUID.
 
     @InjectView(R.id.frame)
     SwipeFlingAdapterView flingContainer;
@@ -48,7 +48,7 @@ public class IxBurning extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_SELECT_DEVICE) {
+        if (requestCode == REQUEST_SELECT_DEVICE && data != null) {
             btAddr = data.getStringExtra(SelectDevice.EXTRA_ADDRESS); //receive the address of the bluetooth device
             System.out.println("result btAddr=" + btAddr);
             if (btAddr != null) {
@@ -57,6 +57,8 @@ public class IxBurning extends AppCompatActivity {
             } else {
                 finish();
             }
+        } else {
+            finish();
         }
     }
 
