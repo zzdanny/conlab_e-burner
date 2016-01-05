@@ -112,7 +112,7 @@ public class ChooseActivity extends Activity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(ChooseActivity.this, IxBurningTest.class), REQUEST_IXBURNUNG);
+                startActivityForResult(new Intent(ChooseActivity.this, IxBurning.class), REQUEST_IXBURNUNG);
             }
         });
     }

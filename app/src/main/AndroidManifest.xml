@@ -31,8 +31,6 @@
             android:name=".activity.ChooseActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".activity.IxBurningTest" >
-        </activity>
     </application>
 
 </manifest>

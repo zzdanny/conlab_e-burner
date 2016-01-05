@@ -21,7 +21,6 @@ import tw.ntust.e_burner.R;
 public class SelectDevice extends AppCompatActivity {
 
     public static final String EXTRA_ADDRESS = "device_address"; // for intent extra parameter
-    public static final int DEVICE_SELECTED = 1;
 
     ListView deviceList;
 
@@ -76,11 +75,12 @@ public class SelectDevice extends AppCompatActivity {
             // Get the device MAC address, the last 17 chars in the View
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
+            System.out.println("selected address=" + address);
 
             // send result back
             Intent intent = new Intent();
             intent.putExtra(EXTRA_ADDRESS, address); //this will be received at ledControl (class) Activity
-            setResult(DEVICE_SELECTED, intent);
+            setResult(RESULT_OK, intent);
             finish();
         }
     };
