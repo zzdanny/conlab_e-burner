@@ -68,6 +68,7 @@ public class IxBurning extends AppCompatActivity {
         } catch (IOException e) {
             makeToast(getApplicationContext(), "Error sending message");
             e.printStackTrace();
+            finish();
         }
     }
 
