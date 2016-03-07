@@ -3,6 +3,8 @@ package tw.ntust.e_burner.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,7 +18,7 @@ import tw.ntust.e_burner.R;
 import tw.ntust.e_burner.components.AmountItem;
 import tw.ntust.e_burner.components.AmountListAdapter;
 
-public class ChooseActivity extends Activity {
+public class ChooseActivity extends BaseActivity {
 
     private int remainingAncestor, remainingEmperor;
     private ArrayList<AmountItem> amountItems;

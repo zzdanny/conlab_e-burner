@@ -6,7 +6,9 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,13 +25,12 @@ import java.util.UUID;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import tw.ntust.e_burner.R;
+import tw.ntust.e_burner.app.Constants;
 import tw.ntust.e_burner.flingswipe.SwipeFlingAdapterView;
 
-public class IxBurning extends AppCompatActivity {
-
-    private String btAddr;
+public class IxBurning extends BaseActivity {
+    private String btAddr = "";
     private boolean isBtConnected = false;
-    public final int REQUEST_SELECT_DEVICE = 11;
 
     BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
@@ -42,21 +43,29 @@ public class IxBurning extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("onCreate");
-        startActivityForResult(new Intent(IxBurning.this, SelectDevice.class), REQUEST_SELECT_DEVICE);
+
+        // if there's no default bluetooth device in the SharedPreferences, start SelectDeviceActivity to ask user
+        btAddr = mPrefs.getString(Constants.PREF_DEFAULT_BT_DEVICE, "");
+        if (btAddr.equals("")) {
+            startActivityForResult(new Intent(IxBurning.this, SelectDevice.class),Constants. REQUEST_SELECT_DEVICE);
+        } else {
+            initComponents();
+            new ConnectBT().execute(); // call the class to connect
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_SELECT_DEVICE && data != null) {
+        if (requestCode == Constants.REQUEST_SELECT_DEVICE && data != null) {
             btAddr = data.getStringExtra(SelectDevice.EXTRA_ADDRESS); //receive the address of the bluetooth device
-            System.out.println("result btAddr=" + btAddr);
             if (btAddr != null) {
                 initComponents();
                 new ConnectBT().execute(); // call the class to connect
             } else {
                 finish();
             }
+            // set selected bluetooth device address to default
+            mPrefs.edit().putString(Constants.PREF_DEFAULT_BT_DEVICE, btAddr).commit();
         } else {
             finish();
         }
@@ -112,7 +121,6 @@ public class IxBurning extends AppCompatActivity {
             @Override
             public void removeFirstObjectInAdapter() {
                 // this is the simplest way to delete an object from the Adapter (/AdapterView)
-                // Log.d("LIST", "removed object!");
                 adapter.notifyDataSetChanged();
             }
 

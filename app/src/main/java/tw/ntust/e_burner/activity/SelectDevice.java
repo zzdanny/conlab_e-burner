@@ -3,6 +3,7 @@ package tw.ntust.e_burner.activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.Set;
 
 import tw.ntust.e_burner.R;
 
-public class SelectDevice extends AppCompatActivity {
+public class SelectDevice extends BaseActivity {
 
     public static final String EXTRA_ADDRESS = "device_address"; // for intent extra parameter
 
@@ -37,8 +38,15 @@ public class SelectDevice extends AppCompatActivity {
         // if the device has bluetooth
         btAdapter = BluetoothAdapter.getDefaultAdapter();
 
+        // check whether the device support bluetooth feature
+        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
+            Toast.makeText(this, "FEATURE_BLUETOOTH NOT support", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
         if (btAdapter == null) {
-            Toast.makeText(getApplicationContext(), "Bluetooth Device Not Available", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bluetooth is not supported on this hardware platform", Toast.LENGTH_LONG).show();
             finish();
         } else if (!btAdapter.isEnabled()) {
             // ask to the user turn the bluetooth on
