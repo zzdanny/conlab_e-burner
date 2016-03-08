@@ -178,6 +178,7 @@ public class IxBurning extends BaseActivity {
                     btSocket.connect(); //start connection
                 }
             } catch (IOException e) {
+                e.printStackTrace();
                 connectSuccess = false; //if the try failed, you can check the exception here
             }
             return null;
