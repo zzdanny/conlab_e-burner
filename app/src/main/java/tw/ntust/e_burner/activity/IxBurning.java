@@ -33,7 +33,7 @@ public class IxBurning extends AppCompatActivity {
 
     BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
-    private static final UUID myUUID = UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66"); // Android SPP UUID.
+    private static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // Android SPP UUID.
 
     @InjectView(R.id.frame)
     SwipeFlingAdapterView flingContainer;
