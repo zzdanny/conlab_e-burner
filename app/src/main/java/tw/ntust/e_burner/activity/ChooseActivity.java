@@ -25,7 +25,7 @@ public class ChooseActivity extends BaseActivity {
 
     public final int REQUEST_IXBURNUNG = 10;
 
-    // -- layout.activity_choose
+    // -- layout.remain_display
     private ProgressBar progressEmperor, progressAncestor;
     private TextView txtEmperorProgress, txtAncestorPorgress;
     // -- layout.choose_target
