@@ -5,14 +5,16 @@
 
     <include layout="@layout/activity_choose"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"> </include>
+        android:layout_height="wrap_content"
+        android:id="@+id/include2"> </include>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_centerVertical="true"
+        android:id="@+id/linearLayout4">
 
         <Space
             android:layout_width="0dp"
@@ -21,74 +23,9 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2">
+            android:layout_width="250dp"
+            android:layout_height="202dp">
 
-            <RelativeLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/chooseTarget_imgEmperor"
-                    android:tag="emperor"
-                    android:src="@drawable/pic_emperor"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_above="@+id/textView5"
-                    android:layout_alignParentStart="true" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="化給神明"
-                    android:id="@+id/textView5"
-                    android:textAlignment="center"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="20dp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp">
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/chooseTarget_imgAncestor"
-                    android:tag="ancestor"
-                    android:src="@drawable/pic_ancestor"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:layout_gravity="bottom"
-                    android:layout_above="@+id/textView6"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="化給祖先"
-                    android:id="@+id/textView6"
-                    android:textAlignment="center"
-                    android:layout_gravity="bottom"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="20dp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
         </LinearLayout>
 
         <Space
@@ -97,5 +34,73 @@
             android:layout_weight="0.5" />
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="100dp"
+        android:layout_height="232dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/include2"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/relativeLayout">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/chooseTarget_imgEmperor"
+            android:tag="emperor"
+            android:src="@drawable/pic_emperor"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center_horizontal"
+            android:layout_above="@+id/textView5"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="化給神明"
+            android:id="@+id/textView5"
+            android:textAlignment="center"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="100dp"
+        android:layout_height="238dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_toStartOf="@+id/relativeLayout">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/chooseTarget_imgAncestor"
+            android:tag="ancestor"
+            android:src="@drawable/pic_ancestor"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_gravity="bottom"
+            android:layout_above="@+id/textView6"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="化給祖先"
+            android:id="@+id/textView6"
+            android:textAlignment="center"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
 </RelativeLayout>
