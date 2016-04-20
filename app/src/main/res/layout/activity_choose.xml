@@ -27,53 +27,15 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="16sp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textStyle="bold"
-                android:text="給神明的金紙庫存"
-                android:textColor="#000"
-                android:textSize="16sp" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/choose_progressEmperor"
-                    android:progress="50"
-                    android:max="100"
-                    android:progressDrawable="@drawable/progress_bar_green"
-                    android:layout_alignParentTop="true"
-                    android:layout_toStartOf="@+id/choose_txtEmperorProgress" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="  50"
-                    android:id="@+id/choose_txtEmperorProgress"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginLeft="5sp"
-                    android:textStyle="bold"
-                    android:layout_centerVertical="true" />
-
-            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="給祖先的金紙庫存"
+                android:text="金紙代幣餘額"
                 android:id="@+id/textView3"
                 android:textStyle="bold"
                 android:textColor="#000"
@@ -100,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="  50"
+                    android:text="  100"
                     android:id="@+id/choose_txtAncestorProgress"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"

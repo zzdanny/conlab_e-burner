@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/activity_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/include"> </include>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/include"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="120dp">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3" />
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/bg_white_round">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="請選擇金紙數量"
+                android:id="@+id/textView4"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/textView4"
+                android:id="@+id/chooseAmount_listAmount"
+                android:layout_above="@+id/linearLayout2"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:choiceMode="singleChoice"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="5dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/linearLayout2">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:text="取消"
+                        android:id="@+id/chooseAmount_btnCancel"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/button_cancel"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#e5e5e5" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+                        android:text="開始"
+                        android:id="@+id/chooseAmount_btnStart"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/button_ok"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#e5e5e5" />
+                </FrameLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3" />
+
+    </LinearLayout>
+
+</RelativeLayout>
