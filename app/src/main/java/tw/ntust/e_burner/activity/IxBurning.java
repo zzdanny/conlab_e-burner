@@ -10,6 +10,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
@@ -30,7 +32,8 @@ public class IxBurning extends AppCompatActivity {
     private String btAddr;
     private boolean isBtConnected = false;
     public final int REQUEST_SELECT_DEVICE = 11;
-
+    private ImageView gold_multi;
+    private int k = 0;
     BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
     private static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // Android SPP UUID.
@@ -43,7 +46,10 @@ public class IxBurning extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         System.out.println("onCreate");
-        startActivityForResult(new Intent(IxBurning.this, SelectDevice.class), REQUEST_SELECT_DEVICE);
+        gold_multi = (ImageView)findViewById(R.id.gold_multi);
+
+        initComponents();
+        //startActivityForResult(new Intent(IxBurning.this, SelectDevice.class), REQUEST_SELECT_DEVICE);
     }
 
     @Override
@@ -90,7 +96,7 @@ public class IxBurning extends AppCompatActivity {
         ButterKnife.inject(this);
 
         // 放在listView中的图片资源id
-        int[] imgAry = new int[] { R.drawable.ic_coin};
+        int[] imgAry = new int[] { R.drawable.goldpaper_single};
         // 创建List集合对象
         final List a = new ArrayList();
         // 为List集合添加数据
@@ -98,7 +104,7 @@ public class IxBurning extends AppCompatActivity {
             Map map = new HashMap();
             map.put("image", imgAry[i]);
             // 金紙數量在這
-            for (int k = 0; k < 100; k++) {
+            for (k = 0; k < 5; k++) {
                 a.add(map);
             }
         }
@@ -113,19 +119,26 @@ public class IxBurning extends AppCompatActivity {
             public void removeFirstObjectInAdapter() {
                 // this is the simplest way to delete an object from the Adapter (/AdapterView)
                 // Log.d("LIST", "removed object!");
+                a.remove(0);
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onUpCardExit(Object dataObject) {
                 makeToast(IxBurning.this, "Up!");
-                btSendMsg("1");
+//                btSendMsg("1");
             }
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
                 // Ask for more data here
                 Log.d("LIST", "notified");
+                if(k>0) {
+                    Log.d("LIST", "notified");
+                    findViewById(R.id.gold_multi).setVisibility(View.INVISIBLE);
+                }
+                //    a.add("XML ");
+
             }
 
             @Override

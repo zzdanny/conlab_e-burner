@@ -1,106 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/activity_choose"
+    <include
+        android:id="@+id/include2"
+        layout="@layout/activity_choose"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/include2"> </include>
+        android:layout_height="wrap_content"></include>
+
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/linearLayout4">
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5" />
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="250dp"
-            android:layout_height="202dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/chooseTarget_imgEmperor"
+                android:layout_width="127dp"
+                android:layout_height="159dp"
+                android:src="@drawable/pic_god" />
+
+            <Button
+                android:id="@+id/button4"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:height="10dp"
+                android:background="@drawable/button_god"
+                android:text="New Button"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.69"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/chooseTarget_imgAncestor"
+                    android:layout_width="1270dp"
+                    android:layout_height="159dp"
+
+                    android:src="@drawable/pic_ancestor" />
+
+                <Button
+                    android:id="@+id/button42"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_ancestor"
+                    android:text="New Button"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.69"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/chooseTarget_imgGhost"
+                    android:layout_width="127dp"
+                    android:layout_height="159dp"
+
+
+                    android:src="@drawable/pic_ghost" />
+
+                <Button
+                    android:id="@+id/button43"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_ghost"
+                    android:text="New Button"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5" />
 
     </LinearLayout>
+    <include
+        android:id="@+id/include3"
+        layout="@layout/choose_selector"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></include>
 
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="100dp"
-        android:layout_height="232dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/include2"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/relativeLayout">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/chooseTarget_imgEmperor"
-            android:tag="emperor"
-            android:src="@drawable/pic_emperor"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:layout_gravity="center_horizontal"
-            android:layout_above="@+id/textView5"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="化給神明"
-            android:id="@+id/textView5"
-            android:textAlignment="center"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="100dp"
-        android:layout_height="238dp"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@+id/linearLayout4"
-        android:layout_toStartOf="@+id/relativeLayout">
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/chooseTarget_imgAncestor"
-            android:tag="ancestor"
-            android:src="@drawable/pic_ancestor"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:layout_gravity="bottom"
-            android:layout_above="@+id/textView6"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="化給祖先"
-            android:id="@+id/textView6"
-            android:textAlignment="center"
-            android:layout_gravity="bottom"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
-</RelativeLayout>
+</FrameLayout>

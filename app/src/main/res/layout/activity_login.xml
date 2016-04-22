@@ -75,11 +75,11 @@
 
         </LinearLayout>
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:text="忘記帳號/密碼?"
-            android:id="@+id/button2"
+            android:id="@+id/forget"
             android:textColor="#ffffff"
             android:layout_gravity="right"
             android:background="@drawable/button_forget" />
@@ -110,12 +110,12 @@
         android:layout_alignParentBottom="true" />
 
     <Button
-        android:layout_width="100"
-        android:layout_height="40"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:text="登入"
         android:textSize="18sp"
         android:textColor="#e5e5e5"
-        android:id="@+id/button"
+        android:id="@+id/main_btnLogin"
         android:layout_alignBottom="@+id/chooseAmount_btnStart"
         android:background="@drawable/button_login"
         android:layout_alignEnd="@+id/linearLayout3" />

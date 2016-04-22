@@ -3,9 +3,11 @@ package tw.ntust.e_burner.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,9 +29,12 @@ public class ChooseActivity extends Activity {
     private ProgressBar progressEmperor, progressAncestor;
     private TextView txtEmperorProgress, txtAncestorPorgress;
     // -- layout.choose_target
-    private ImageView imgEmperor, imgAncestor;
+    private ImageView imgEmperor, imgAncestor,imgGhost;
+    private LinearLayout selector;
+
     // -- layout.choose_amount
     private Button btnStart, btnCancel;
+    private Button Choosecancel;
     private ListView listAmount;
 
     @Override
@@ -37,16 +42,8 @@ public class ChooseActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_target);
 
-        // get data from Shared Preferences
-        // ----- default value for testing
-        remainingAncestor = 30;
-        remainingEmperor = 40;
-        amountItems = new ArrayList<>();
-        amountItems.add(new AmountItem(0, "大節-5疊"));
-        amountItems.add(new AmountItem(1, "大節-5疊"));
-        amountItems.add(new AmountItem(2, "小節-3疊"));
-        amountItems.add(new AmountItem(3, "小節-3疊"));
-        // -----
+
+        findViewById(R.id.selector_simple).setVisibility(View.INVISIBLE);
 
         initComponents_chooseTarget();
 
@@ -65,7 +62,7 @@ public class ChooseActivity extends Activity {
     }
 
     private void initComponents_choose() {
-        progressAncestor = (ProgressBar) findViewById(R.id.choose_progressAncestor);
+      /*  progressAncestor = (ProgressBar) findViewById(R.id.choose_progressAncestor);
         progressEmperor = (ProgressBar) findViewById(R.id.choose_progressEmperor);
         txtAncestorPorgress = (TextView) findViewById(R.id.choose_txtAncestorProgress);
         txtEmperorProgress = (TextView) findViewById(R.id.choose_txtEmperorProgress);
@@ -73,7 +70,7 @@ public class ChooseActivity extends Activity {
         progressAncestor.setProgress(remainingAncestor);
         progressEmperor.setProgress(remainingEmperor);
         txtAncestorPorgress.setText(String.format("%3d", remainingAncestor));
-        txtEmperorProgress.setText(String.format("%3d", remainingEmperor));
+        txtEmperorProgress.setText(String.format("%3d", remainingEmperor));*/
     }
 
     private void initComponents_chooseTarget() {
@@ -81,16 +78,62 @@ public class ChooseActivity extends Activity {
 
         imgEmperor = (ImageView) findViewById(R.id.chooseTarget_imgEmperor);
         imgAncestor = (ImageView) findViewById(R.id.chooseTarget_imgAncestor);
-
-        View.OnClickListener onChooseTargetClickListener = new View.OnClickListener() {
+        selector = (LinearLayout)findViewById(R.id.selector_simple);
+        imgGhost = (ImageView) findViewById(R.id.chooseTarget_imgGhost);
+        View.OnClickListener onChooseEmperorClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.choose_amount);
+                selector.setVisibility(View.VISIBLE);
+            }
+        };
+
+        View.OnClickListener onChooseAncestorClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get data from Shared Preferences
+                // ----- default value for testing
+                amountItems = new ArrayList<>();
+                amountItems.add(new AmountItem(0, "拜地基主"));
+                amountItems.add(new AmountItem(1, "祈求平安"));
+                amountItems.add(new AmountItem(2, "求財開運"));
+                // -----
+                selector.setVisibility(View.VISIBLE);
+
+                initComponents_chooseAmount();
+
+            }
+        };
+
+        View.OnClickListener onChooseGhostClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get data from Shared Preferences
+                // ----- default value for testing
+                amountItems = new ArrayList<>();
+                amountItems.add(new AmountItem(0, "中元普渡"));
+                amountItems.add(new AmountItem(1, "其他"));
+                // -----
+
+                selector.setVisibility(View.VISIBLE);
+            }
+        };
+
+        View.OnClickListener onChooseGodClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get data from Shared Preferences
+                // ----- default value for testing
+                amountItems = new ArrayList<>();
+                amountItems.add(new AmountItem(0, "冥誕"));
+                amountItems.add(new AmountItem(1, "祭日"));
+                amountItems.add(new AmountItem(3, "祈求平安"));
+                // -----
+
                 initComponents_chooseAmount();
             }
         };
-        imgEmperor.setOnClickListener(onChooseTargetClickListener);
-        imgAncestor.setOnClickListener(onChooseTargetClickListener);
+        imgEmperor.setOnClickListener(onChooseAncestorClickListener);
+        imgAncestor.setOnClickListener(onChooseEmperorClickListener);
     }
 
     private void initComponents_chooseAmount() {
@@ -98,17 +141,19 @@ public class ChooseActivity extends Activity {
 
         listAmount = (ListView) findViewById(R.id.chooseAmount_listAmount);
         btnStart = (Button) findViewById(R.id.chooseAmount_btnStart);
-        btnCancel = (Button) findViewById(R.id.chooseAmount_btnCancel);
+        Choosecancel=(Button) findViewById(R.id.choose_btnCancel);
 
         listAmount.setAdapter(new AmountListAdapter(ChooseActivity.this, amountItems));
         listAmount.setItemChecked(0, true);
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        Choosecancel.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.choose_target);
-                initComponents_chooseTarget();
+                selector.setVisibility(View.INVISIBLE);
+                Log.e("hi", "hihihihi");
             }
         });
+
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +171,7 @@ public class ChooseActivity extends Activity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            progressBar.setProgress(num);
+//                            progressBar.setProgress(num);
                         }
                     });
                     try {

@@ -1,16 +1,41 @@
-<merge
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
 
-    <tw.ntust.e_burner.flingswipe.SwipeFlingAdapterView
-        android:id="@+id/frame"
-        android:background="#ffeee9e2"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        app:rotation_degrees="15.5"
-        tools:context=".lxBurningTest" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="207dp"
+            android:layout_height="207dp"
+            android:id="@+id/imageView6"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/burner" />
+
+        <ImageView
+            android:layout_width="217dp"
+            android:layout_height="321dp"
+            android:id="@+id/gold_multi"
+            android:layout_marginBottom="-25dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:src="@drawable/goldpaper" />
+
+        <tw.ntust.e_burner.flingswipe.SwipeFlingAdapterView
+            android:id="@+id/frame"
+            android:layout_width="387dp"
+            android:layout_height="574dp"
+            android:layout_marginBottom="10dp"
+            app:rotation_degrees="15.5"
+            tools:context=".lxBurningTest"
+            android:layout_gravity="left|top" />
+
+    </FrameLayout>
 
 
-</merge>
+</FrameLayout>
 

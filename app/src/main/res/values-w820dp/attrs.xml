@@ -8,4 +8,5 @@
         <attr name="max_visible" format="integer"/>
     </declare-styleable>
 
+
 </resources>

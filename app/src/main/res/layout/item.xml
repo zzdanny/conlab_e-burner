@@ -10,7 +10,7 @@
         android:layout_width="210dp"
         android:layout_height="310dp"
         android:id="@+id/helloText"
-        android:src="@drawable/ic_coin"
+        android:src="@drawable/goldpaper_single"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal|bottom" />
 
