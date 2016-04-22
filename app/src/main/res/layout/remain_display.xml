@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="69dp"
             android:layout_height="84dp"
-            android:id="@+id/imageView"
+            android:id="@+id/imgMenuNav"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_coins"
             android:adjustViewBounds="true" />

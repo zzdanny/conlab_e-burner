@@ -1,10 +1,7 @@
 package tw.ntust.e_burner.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +10,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import tw.ntust.e_burner.R;
 import tw.ntust.e_burner.components.AmountItem;
@@ -28,6 +27,11 @@ public class ChooseActivity extends BaseActivity {
     // -- layout.remain_display
     private ProgressBar progressEmperor, progressAncestor;
     private TextView txtEmperorProgress, txtAncestorPorgress;
+    private View incNav_bottom, viewNavpad;
+    private ImageView imgMenuNav, imgMenuChart, imgMenuMoney, imgMenuSettings;
+    private List<View> menuExpandedViews;
+    private boolean navMenuExpanded = false;
+
     // -- layout.choose_target
     private ImageView imgEmperor, imgAncestor;
     // -- layout.choose_amount
@@ -59,7 +63,6 @@ public class ChooseActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        System.out.println("Request code=" + requestCode);
         if (requestCode == REQUEST_IXBURNUNG) {
             setContentView(R.layout.choose_target);
             initComponents_chooseTarget();
@@ -71,11 +74,31 @@ public class ChooseActivity extends BaseActivity {
         progressEmperor = (ProgressBar) findViewById(R.id.choose_progressEmperor);
         txtAncestorPorgress = (TextView) findViewById(R.id.choose_txtAncestorProgress);
         txtEmperorProgress = (TextView) findViewById(R.id.choose_txtEmperorProgress);
+        incNav_bottom = findViewById(R.id.incNav_bottom);
+        imgMenuNav = (ImageView) incNav_bottom.findViewById(R.id.imgMenuNav);
+        imgMenuChart = (ImageView) incNav_bottom.findViewById(R.id.imgMenuChart);
+        imgMenuMoney = (ImageView) incNav_bottom.findViewById(R.id.imgMenuMoney);
+        imgMenuSettings = (ImageView) incNav_bottom.findViewById(R.id.imgMenuSettings);
+        viewNavpad = incNav_bottom.findViewById(R.id.viewNavpad);
 
         progressAncestor.setProgress(remainingAncestor);
         progressEmperor.setProgress(remainingEmperor);
         txtAncestorPorgress.setText(String.format("%3d", remainingAncestor));
         txtEmperorProgress.setText(String.format("%3d", remainingEmperor));
+
+        menuExpandedViews = new ArrayList<>(Arrays.asList(
+                new View[]{viewNavpad, imgMenuChart, imgMenuMoney, imgMenuSettings}
+        ));
+        imgMenuNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (navMenuExpanded)
+                    closeNavMenu();
+                else
+                    expandNavMenu();
+            }
+        });
+        closeNavMenu();
     }
 
     private void initComponents_chooseTarget() {
@@ -139,6 +162,20 @@ public class ChooseActivity extends BaseActivity {
                 }
             }
         }).start();
+    }
+
+    private void closeNavMenu() {
+        for (View v : menuExpandedViews) {
+            v.setVisibility(View.INVISIBLE);
+        }
+        navMenuExpanded = false;
+    }
+
+    private void expandNavMenu() {
+        for (View v : menuExpandedViews) {
+            v.setVisibility(View.VISIBLE);
+        }
+        navMenuExpanded = true;
     }
 
 }

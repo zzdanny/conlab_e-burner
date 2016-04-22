@@ -105,6 +105,7 @@
              android:layout_marginLeft="20dp"
              android:layout_marginRight="20dp"
              android:layout_alignParentBottom="true"
-             android:layout_marginBottom="20dp"/>
+             android:layout_marginBottom="20dp"
+             android:id="@+id/incNav_bottom"/>
 
 </RelativeLayout>
